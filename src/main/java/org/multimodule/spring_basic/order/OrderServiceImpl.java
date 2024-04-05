@@ -1,6 +1,5 @@
 package org.multimodule.spring_basic.order;
 
-import org.multimodule.spring_basic.member.Grade;
 import org.multimodule.spring_basic.member.Member;
 import org.multimodule.spring_basic.member.MemberRepository;
 import org.multimodule.spring_basic.member.MemoryMemberRepository;
@@ -22,7 +21,7 @@ public class OrderServiceImpl implements OrderService{
         int price = Integer.parseInt(productPrice);
 
         //할인 적용: 주문 서비스는 회원 등급에 따른 할인 여부를 할인 정책에 위임한다.
-        int discountedPrice = discountService.discountByGrade(member.getGrade(), price);
+        int discountedPrice = discountService.discountByGrade(member, price);
 
 
         //주문 결과 반환: 주문 서비스는 할인 결과를 포함한 주문 결과를 반환한다.
