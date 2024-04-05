@@ -28,4 +28,9 @@ public class OrderServiceImpl implements OrderService{
 
         orderRepository.save(order);
     }
+
+    @Override
+    public Order findOrder(Long memberId) {
+        return orderRepository.findById(memberId);
+    }
 }

@@ -2,7 +2,6 @@ package org.multimodule.spring_basic.order;
 
 public class Order {
 
-    private Long id;
     private Long memberId;
     private String productName;
     private int productPrice;
@@ -13,12 +12,6 @@ public class Order {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productDiscountPrice = productDiscountPrice;
-    }
-
-
-
-    public Long getId() {
-        return id;
     }
 
     public Long getMemberId() {
