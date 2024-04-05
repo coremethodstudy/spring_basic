@@ -2,13 +2,13 @@ package org.multimodule.spring_basic.order;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.matchers.Or;
-import org.multimodule.spring_basic.member.Grade;
-import org.multimodule.spring_basic.member.Member;
-import org.multimodule.spring_basic.member.MemberService;
-import org.multimodule.spring_basic.member.MemberServiceImpl;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.multimodule.spring_basic.command.domain.member.Grade;
+import org.multimodule.spring_basic.command.domain.member.Member;
+import org.multimodule.spring_basic.command.application.MemberService;
+import org.multimodule.spring_basic.command.application.MemberServiceImpl;
+import org.multimodule.spring_basic.command.domain.order.Order;
+import org.multimodule.spring_basic.command.application.OrderService;
+import org.multimodule.spring_basic.command.application.OrderServiceImpl;
 
 class OrderServiceImplTest {
 

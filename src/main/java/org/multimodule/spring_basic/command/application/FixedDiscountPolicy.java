@@ -1,7 +1,7 @@
-package org.multimodule.spring_basic.order;
+package org.multimodule.spring_basic.command.application;
 
-import org.multimodule.spring_basic.member.Grade;
-import org.multimodule.spring_basic.member.Member;
+import org.multimodule.spring_basic.command.domain.member.Grade;
+import org.multimodule.spring_basic.command.domain.member.Member;
 
 public class FixedDiscountPolicy implements DiscountPolicy {
 

@@ -1,9 +1,9 @@
-package org.multimodule.spring_basic.order;
+package org.multimodule.spring_basic.command.application;
 
-import org.multimodule.spring_basic.member.Member;
-import org.multimodule.spring_basic.member.MemberRepository;
-import org.multimodule.spring_basic.member.MemoryMemberRepository;
-import org.multimodule.spring_basic.product.Product;
+import org.multimodule.spring_basic.command.domain.member.Member;
+import org.multimodule.spring_basic.repository.*;
+import org.multimodule.spring_basic.command.domain.order.*;
+import org.multimodule.spring_basic.command.domain.product.Product;
 
 public class OrderServiceImpl implements OrderService{
 

@@ -1,4 +1,6 @@
-package org.multimodule.spring_basic.member;
+package org.multimodule.spring_basic.repository;
+
+import org.multimodule.spring_basic.command.domain.member.Member;
 
 import java.util.HashMap;
 import java.util.Map;

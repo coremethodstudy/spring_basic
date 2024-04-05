@@ -1,4 +1,4 @@
-package org.multimodule.spring_basic.member;
+package org.multimodule.spring_basic.command.domain.member;
 
 public class Member {
 

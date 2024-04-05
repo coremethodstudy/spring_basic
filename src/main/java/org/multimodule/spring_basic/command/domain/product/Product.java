@@ -1,4 +1,4 @@
-package org.multimodule.spring_basic.product;
+package org.multimodule.spring_basic.command.domain.product;
 
 public class Product {
 

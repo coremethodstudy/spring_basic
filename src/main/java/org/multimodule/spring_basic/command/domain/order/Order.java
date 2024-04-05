@@ -1,4 +1,4 @@
-package org.multimodule.spring_basic.order;
+package org.multimodule.spring_basic.command.domain.order;
 
 public class Order {
 
