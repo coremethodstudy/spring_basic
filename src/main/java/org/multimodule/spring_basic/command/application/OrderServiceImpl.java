@@ -1,6 +1,8 @@
 package org.multimodule.spring_basic.command.application;
 
-import org.multimodule.spring_basic.command.domain.member.Member;
+import org.multimodule.spring_basic.query.MemberDao;
+import org.multimodule.spring_basic.query.MemberData;
+import org.multimodule.spring_basic.query.MemoryMemberDao;
 import org.multimodule.spring_basic.repository.*;
 import org.multimodule.spring_basic.command.domain.order.*;
 import org.multimodule.spring_basic.command.domain.product.Product;
@@ -8,13 +10,13 @@ import org.multimodule.spring_basic.command.domain.product.Product;
 public class OrderServiceImpl implements OrderService{
 
     private final OrderRepository orderRepository = new DiscountOrderRepository();
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberDao memberDao = new MemoryMemberDao();
     private final ProductRepository productRepository = new CarProductRepository();
     private final DiscountPolicy discountPolicy = new FixedDiscountPolicy();
     @Override
     public void order(Long memberId, String productName, String productPrice) {
         //회원 조회: 할인을 위해서는 회원 등급이 필요하다. 그래서 주문 서비스는 회원 저장소에서 회원을 조회한다.
-        Member member = memberRepository.findById(memberId);
+        MemberData member = memberDao.findById(memberId);
 
         Product product = productRepository.findByName(productName);
 
