@@ -21,11 +21,10 @@ public class OrderServiceImpl implements OrderService{
         int price = Integer.parseInt(productPrice);
 
         //할인 적용: 주문 서비스는 회원 등급에 따른 할인 여부를 할인 정책에 위임한다.
-        int discountedPrice = discountPolicy.discountByGrade(member, price);
-
+        int discountPrice = discountPolicy.discountByGrade(member, price);
 
         //주문 결과 반환: 주문 서비스는 할인 결과를 포함한 주문 결과를 반환한다.
-        Order order = new Order(memberId, productName, discountedPrice);
+        Order order = new Order(memberId, productName, price, discountPrice);
 
         orderRepository.save(order);
     }
