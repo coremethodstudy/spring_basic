@@ -1,24 +1,34 @@
 package org.multimodule.spring_basic.command.application;
 
-import org.multimodule.spring_basic.query.MemberDao;
-import org.multimodule.spring_basic.query.MemberData;
-import org.multimodule.spring_basic.query.MemoryMemberDao;
+import org.multimodule.spring_basic.exception.ProductDomainException;
+import org.multimodule.spring_basic.query.*;
 import org.multimodule.spring_basic.repository.*;
 import org.multimodule.spring_basic.command.domain.order.*;
-import org.multimodule.spring_basic.command.domain.product.Product;
+
+import java.util.List;
 
 public class OrderServiceImpl implements OrderService{
 
     private final OrderRepository orderRepository = new DiscountOrderRepository();
     private final MemberDao memberDao = new MemoryMemberDao();
-    private final ProductRepository productRepository = new CarProductRepository();
+    private final ProductDao productDao = new CarProductDao();
     private final DiscountPolicy discountPolicy = new FixedDiscountPolicy();
     @Override
     public void order(Long memberId, String productName, String productPrice) {
         //회원 조회: 할인을 위해서는 회원 등급이 필요하다. 그래서 주문 서비스는 회원 저장소에서 회원을 조회한다.
         MemberData member = memberDao.findById(memberId);
 
-        Product product = productRepository.findByName(productName);
+        List<ProductData> productDataList = productDao.findAll();
+        ProductData foundProduct = null;
+        for (ProductData product : productDataList) {
+            if(product.getProductName().equals(productName)) {
+                foundProduct = product;
+                break;
+            }
+        }
+        if(foundProduct == null) {
+            throw new ProductDomainException("Product not found.");
+        }
 
         int price = Integer.parseInt(productPrice);
 
@@ -26,7 +36,7 @@ public class OrderServiceImpl implements OrderService{
         int discountPrice = discountPolicy.discountByGrade(member, price);
 
         //주문 결과 반환: 주문 서비스는 할인 결과를 포함한 주문 결과를 반환한다.
-        Order order = new Order(memberId, productName, price, discountPrice);
+        Order order = new Order(memberId, foundProduct.getProductName(), price, discountPrice);
 
         orderRepository.save(order);
     }
