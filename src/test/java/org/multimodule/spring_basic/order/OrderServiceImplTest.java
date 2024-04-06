@@ -23,7 +23,7 @@ class OrderServiceImplTest {
         Member foundMember = memberService.findMember(1L);
 
         //when
-        orderService.order(foundMember.getId(), "캉골가방", "200000");
+        orderService.create(foundMember.getId(), "캉골가방", "200000");
         Order order = orderService.findOrder(1L);
 
         //then

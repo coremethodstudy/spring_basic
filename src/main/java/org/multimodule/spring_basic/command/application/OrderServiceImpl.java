@@ -14,7 +14,7 @@ public class OrderServiceImpl implements OrderService{
     private final ProductDao productDao = new CarProductDao();
     private final DiscountPolicy discountPolicy = new FixedDiscountPolicy();
     @Override
-    public void order(Long memberId, String productName, String productPrice) {
+    public void create(Long memberId, String productName, String productPrice) {
         //회원 조회: 할인을 위해서는 회원 등급이 필요하다. 그래서 주문 서비스는 회원 저장소에서 회원을 조회한다.
         MemberData member = memberDao.findById(memberId);
 
