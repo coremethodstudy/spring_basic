@@ -27,6 +27,6 @@ class OrderServiceImplTest {
         Order order = orderService.findOrder(1L);
 
         //then
-        Assertions.assertThat(order.getProductPrice()).isEqualTo(200000);
+        Assertions.assertThat(order.getItemPrice()).isEqualTo(200000);
     }
 }

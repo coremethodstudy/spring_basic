@@ -3,18 +3,18 @@ package org.multimodule.spring_basic.dto;
 
 public class OrderRequestDto {
     private String memberId;
-    private String productId;
+    private String itemId;
 
-    public OrderRequestDto(String memberId, String productId) {
+    public OrderRequestDto(String memberId, String itemId) {
         this.memberId = memberId;
-        this.productId = productId;
+        this.itemId = itemId;
     }
 
     public String getMemberId() {
         return memberId;
     }
 
-    public String getProductId() {
-        return productId;
+    public String getItemId() {
+        return itemId;
     }
 }
