@@ -33,4 +33,14 @@ public class Order {
     public int getProductDiscountPrice() {
         return productDiscountPrice;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "memberId=" + memberId +
+                ", productName='" + productName + '\'' +
+                ", productPrice=" + productPrice +
+                ", productDiscountPrice=" + productDiscountPrice +
+                '}';
+    }
 }
