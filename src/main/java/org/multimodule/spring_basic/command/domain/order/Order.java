@@ -14,6 +14,10 @@ public class Order {
         this.productDiscountPrice = productDiscountPrice;
     }
 
+    public int calculatePrice() {
+        return productPrice - productDiscountPrice;
+    }
+
     public Long getMemberId() {
         return memberId;
     }
