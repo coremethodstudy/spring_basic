@@ -2,13 +2,11 @@ package org.multimodule.spring_basic.order;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.multimodule.spring_basic.command.application.*;
 import org.multimodule.spring_basic.command.domain.member.Grade;
 import org.multimodule.spring_basic.command.domain.member.Member;
-import org.multimodule.spring_basic.command.application.MemberService;
-import org.multimodule.spring_basic.command.application.MemberServiceImpl;
 import org.multimodule.spring_basic.command.domain.order.Order;
-import org.multimodule.spring_basic.command.application.OrderService;
-import org.multimodule.spring_basic.command.application.OrderServiceImpl;
+import org.multimodule.spring_basic.dto.OrderRequestDto;
 
 class OrderServiceImplTest {
 
@@ -22,8 +20,10 @@ class OrderServiceImplTest {
         memberService.join(member);
         Member foundMember = memberService.findMember(1L);
 
+        OrderRequestDto orderRequestDto = new OrderRequestDto("1L", "2L");
+
         //when
-        orderService.create(foundMember.getId(), "캉골가방", "200000");
+        orderService.create(orderRequestDto);
         Order order = orderService.findOrder(1L);
 
         //then
