@@ -7,8 +7,8 @@ import org.multimodule.spring_basic.command.domain.order.*;
 
 public class OrderServiceImpl implements OrderService{
 
-    private final OrderRepository orderRepository;
     private final MemberDao memberDao;
+    private final OrderRepository orderRepository;
     private final ItemDao itemDao;
     private DiscountPolicy discountPolicy;
 

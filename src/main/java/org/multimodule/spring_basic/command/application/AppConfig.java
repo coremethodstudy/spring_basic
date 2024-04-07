@@ -18,11 +18,15 @@ public class AppConfig {
                 new MemoryMemberDao()
                 ,new DiscountOrderRepository()
                 ,new CarItemDao()
-                ,new FixDiscountPolicy()
+                ,new RateDiscountPolicy()
         );
     }
 
     public ItemRepository itemRepository() {
         return new CarItemRepository();
+    }
+
+    public DiscountPolicy discountPolicy() {
+        return new RateDiscountPolicy();
     }
 }

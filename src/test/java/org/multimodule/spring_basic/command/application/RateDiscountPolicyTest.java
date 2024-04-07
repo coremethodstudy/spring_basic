@@ -1,6 +1,7 @@
 package org.multimodule.spring_basic.command.application;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.multimodule.spring_basic.command.domain.member.Grade;
 import org.multimodule.spring_basic.command.domain.member.Member;
@@ -10,7 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RateDiscountPolicyTest {
 
-    DiscountPolicy discountPolicy = new RateDiscountPolicy();
+    DiscountPolicy discountPolicy;
+
+    @BeforeEach
+    public void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        discountPolicy = appConfig.discountPolicy();
+    }
 
     @Test
     void VIP_할인율_적용() {
