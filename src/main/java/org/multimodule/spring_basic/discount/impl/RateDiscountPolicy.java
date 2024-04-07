@@ -6,12 +6,12 @@ import org.multimodule.spring_basic.member.Member;
 
 public class RateDiscountPolicy implements DiscountPolicy {
 
-    private int discountRatePercent = 10;
+    private int discountPercent = 10;
 
     @Override
     public int discount(Member member, int price) {
         System.out.println(this.getClass());
-        return member.getGrade() == Grade.VIP ? (price * discountRatePercent) / 100 : 0;
+        return member.getGrade() == Grade.VIP ? (price * discountPercent) / 100 : 0;
     }
 
 }

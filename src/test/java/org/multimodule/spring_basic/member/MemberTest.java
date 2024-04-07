@@ -1,10 +1,8 @@
 package org.multimodule.spring_basic.member;
 
 import org.junit.jupiter.api.*;
+import org.multimodule.spring_basic.AppConfig;
 import org.multimodule.spring_basic.member.service.MemberService;
-import org.multimodule.spring_basic.member.service.impl.MemberServiceImpl;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * packageName    : org.multimodule.spring_basic.member
@@ -22,12 +20,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class MemberTest {
 
     private MemberService memberService;
+
     private Member vipMember;
     private Member basicMember;
 
+    private final AppConfig appConfig = new AppConfig();
+
     @BeforeEach
     void beforeEach() {
-        memberService = new MemberServiceImpl();
+        memberService = appConfig.memberService();
         vipMember = new Member(1L, "memberA", Grade.VIP);
         basicMember = new Member(2L, "memberB", Grade.BASIC);
     }

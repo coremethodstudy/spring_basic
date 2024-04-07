@@ -1,12 +1,11 @@
 package org.multimodule.spring_basic.order;
 
 import org.junit.jupiter.api.*;
+import org.multimodule.spring_basic.AppConfig;
 import org.multimodule.spring_basic.member.Grade;
 import org.multimodule.spring_basic.member.Member;
 import org.multimodule.spring_basic.member.service.MemberService;
-import org.multimodule.spring_basic.member.service.impl.MemberServiceImpl;
 import org.multimodule.spring_basic.order.service.OrderService;
-import org.multimodule.spring_basic.order.service.impl.OrderServiceImpl;
 
 /**
  * packageName    : org.multimodule.spring_basic.order
@@ -28,10 +27,12 @@ class OrderTest {
     private Member vipMember;
     private Member basicMember;
 
+    private final AppConfig appConfig = new AppConfig();
+
     @BeforeEach
     void beforeEach() {
-        memberService = new MemberServiceImpl();
-        orderService = new OrderServiceImpl();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
 
         vipMember = new Member(1L, "memberA", Grade.VIP);
         basicMember = new Member(2L, "memberB", Grade.BASIC);

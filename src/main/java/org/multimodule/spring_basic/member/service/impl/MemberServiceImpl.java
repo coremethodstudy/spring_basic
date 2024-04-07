@@ -2,12 +2,15 @@ package org.multimodule.spring_basic.member.service.impl;
 
 import org.multimodule.spring_basic.member.Member;
 import org.multimodule.spring_basic.member.repository.MemberRepository;
-import org.multimodule.spring_basic.member.repository.impl.MemoryMemberRepositoryImpl;
 import org.multimodule.spring_basic.member.service.MemberService;
 
 public class MemberServiceImpl implements MemberService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepositoryImpl();
+    private final MemberRepository memberRepository ;
+
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     @Override
     public void join(Member member) {
