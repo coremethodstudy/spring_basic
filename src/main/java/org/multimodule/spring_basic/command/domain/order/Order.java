@@ -34,5 +34,13 @@ public class Order {
         return itemDiscountPrice;
     }
 
-
+    @Override
+    public String toString() {
+        return "Order{" +
+                "memberId=" + memberId +
+                ", itemName='" + itemName + '\'' +
+                ", itemPrice=" + itemPrice +
+                ", itemDiscountPrice=" + itemDiscountPrice +
+                '}';
+    }
 }
