@@ -9,14 +9,14 @@ public class OrderServiceImpl implements OrderService{
 
     private final OrderRepository orderRepository = new DiscountOrderRepository();
     private final MemberDao memberDao = new MemoryMemberDao();
-    private final ItemDao productDao = new CarItemDao();
+    private final ItemDao itemDao = new CarItemDao();
     private final DiscountPolicy discountPolicy = new FixedDiscountPolicy();
     @Override
     public void create(OrderRequestDto orderRequestDto){
         //회원 조회: 할인을 위해서는 회원 등급이 필요하다. 그래서 주문 서비스는 회원 저장소에서 회원을 조회한다.
         MemberData member = memberDao.findById(Long.parseLong((orderRequestDto.getMemberId())));
 
-        ItemData itemData = productDao.findById(Long.parseLong(orderRequestDto.getItemId()));
+        ItemData itemData = itemDao.findById(Long.parseLong(orderRequestDto.getItemId()));
         
         //할인 적용: 주문 서비스는 회원 등급에 따른 할인 여부를 할인 정책에 위임한다.
         int discountPrice = discountPolicy.discountByGrade(member, itemData.getItemPrice());
