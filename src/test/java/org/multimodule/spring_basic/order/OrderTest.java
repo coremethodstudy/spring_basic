@@ -6,6 +6,9 @@ import org.multimodule.spring_basic.member.Grade;
 import org.multimodule.spring_basic.member.Member;
 import org.multimodule.spring_basic.member.service.MemberService;
 import org.multimodule.spring_basic.order.service.OrderService;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * packageName    : org.multimodule.spring_basic.order
@@ -19,6 +22,7 @@ import org.multimodule.spring_basic.order.service.OrderService;
  * 2024-04-07        AngryPig123       최초 생성
  */
 
+@SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class OrderTest {
 
@@ -26,13 +30,14 @@ class OrderTest {
     private OrderService orderService;
     private Member vipMember;
     private Member basicMember;
-
-    private final AppConfig appConfig = new AppConfig();
+    private ApplicationContext applicationContext;
 
     @BeforeEach
     void beforeEach() {
-        memberService = appConfig.memberService();
-        orderService = appConfig.orderService();
+        applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        memberService = applicationContext.getBean("memberService", MemberService.class);
+        orderService = applicationContext.getBean("orderService", OrderService.class);
 
         vipMember = new Member(1L, "memberA", Grade.VIP);
         basicMember = new Member(2L, "memberB", Grade.BASIC);

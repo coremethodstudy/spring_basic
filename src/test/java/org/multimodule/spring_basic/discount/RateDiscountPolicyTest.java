@@ -1,9 +1,13 @@
 package org.multimodule.spring_basic.discount;
 
 import org.junit.jupiter.api.*;
+import org.multimodule.spring_basic.AppConfig;
 import org.multimodule.spring_basic.discount.impl.RateDiscountPolicy;
 import org.multimodule.spring_basic.member.Grade;
 import org.multimodule.spring_basic.member.Member;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * packageName    : org.multimodule.spring_basic.discount.impl
@@ -17,16 +21,19 @@ import org.multimodule.spring_basic.member.Member;
  * 2024-04-07        AngryPig123       최초 생성
  */
 
+@SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class RateDiscountPolicyTest {
 
     private RateDiscountPolicy rateDiscountPolicy;
     private Member vipMember;
     private Member basicMember;
+    private ApplicationContext applicationContext;
 
     @BeforeEach
     void beforeEach() {
-        rateDiscountPolicy = new RateDiscountPolicy();
+        applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        rateDiscountPolicy = applicationContext.getBean("rateDiscountPolicy", RateDiscountPolicy.class);
         vipMember = new Member(1L, "memberA", Grade.VIP);
         basicMember = new Member(2L, "memberB", Grade.BASIC);
     }
