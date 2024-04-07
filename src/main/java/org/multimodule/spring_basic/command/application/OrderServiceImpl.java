@@ -11,6 +11,7 @@ public class OrderServiceImpl implements OrderService{
     private final MemberDao memberDao = new MemoryMemberDao();
     private final ItemDao itemDao = new CarItemDao();
     private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+    private final DiscountPolicy discountPolicy2 = new RateDiscountPolicy();
     @Override
     public void create(OrderRequestDto orderRequestDto){
         //회원 조회: 할인을 위해서는 회원 등급이 필요하다. 그래서 주문 서비스는 회원 저장소에서 회원을 조회한다.
