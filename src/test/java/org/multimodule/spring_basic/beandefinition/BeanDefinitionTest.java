@@ -1,4 +1,4 @@
-package beandefinition;
+package org.multimodule.spring_basic.beandefinition;
 
 import org.junit.jupiter.api.Test;
 import org.multimodule.spring_basic.AppConfig;

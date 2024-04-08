@@ -31,4 +31,10 @@ public class OrderServiceImpl implements OrderService{
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
+
+
+    //싱글톤 검증 코드
+    public MemberRepository getMemberRepository(){
+        return memberRepository;
+    }
 }
