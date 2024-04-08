@@ -7,8 +7,8 @@ public class RateDiscountPolicy implements DiscountPolicy {
 
     private final double rateDiscount = 0.1;
     @Override
-    public int discountByGrade(MemberData member, int price) {
-        if(member.getGrade() == Grade.VIP) {
+    public int discountByGrade(MemberData memberData, int price) {
+        if(memberData.getGrade() == Grade.VIP) {
             return (int) (price * rateDiscount);
         } else {
             return 0;

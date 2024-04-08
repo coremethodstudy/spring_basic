@@ -7,8 +7,8 @@ public class FixDiscountPolicy implements DiscountPolicy {
 
     private final int vipDiscountPrice = 1000;
     @Override
-    public int discountByGrade(MemberData member, int price) {
-        if(member.getGrade() == Grade.VIP) {
+    public int discountByGrade(MemberData memberData, int price) {
+        if(memberData.getGrade() == Grade.VIP) {
             return vipDiscountPrice;
         } else {
             return 0;
