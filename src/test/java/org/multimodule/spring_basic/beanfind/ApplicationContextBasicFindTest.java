@@ -1,8 +1,11 @@
-package org.multimodule.spring_basic.command.application;
+package org.multimodule.spring_basic.beanfind;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.multimodule.spring_basic.command.application.AppConfig;
+import org.multimodule.spring_basic.command.application.MemberService;
+import org.multimodule.spring_basic.command.application.MemberServiceImpl;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
