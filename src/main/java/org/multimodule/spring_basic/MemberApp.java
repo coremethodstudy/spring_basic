@@ -1,6 +1,6 @@
 package org.multimodule.spring_basic;
 
-import org.multimodule.spring_basic.command.application.AppConfig;
+import org.multimodule.spring_basic.config.AppConfig;
 import org.multimodule.spring_basic.command.application.MemberService;
 import org.multimodule.spring_basic.command.domain.member.Grade;
 import org.multimodule.spring_basic.command.domain.member.Member;

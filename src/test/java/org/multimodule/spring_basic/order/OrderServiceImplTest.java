@@ -8,12 +8,9 @@ import org.multimodule.spring_basic.command.domain.item.Item;
 import org.multimodule.spring_basic.command.domain.member.Grade;
 import org.multimodule.spring_basic.command.domain.member.Member;
 import org.multimodule.spring_basic.command.domain.order.Order;
+import org.multimodule.spring_basic.config.AppConfig;
 import org.multimodule.spring_basic.dto.OrderRequestDto;
-import org.multimodule.spring_basic.query.ItemDao;
-import org.multimodule.spring_basic.query.MemberDao;
-import org.multimodule.spring_basic.repository.CarItemRepository;
 import org.multimodule.spring_basic.repository.ItemRepository;
-import org.multimodule.spring_basic.repository.OrderRepository;
 
 class OrderServiceImplTest {
 

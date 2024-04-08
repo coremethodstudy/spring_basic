@@ -1,5 +1,6 @@
-package org.multimodule.spring_basic.command.application;
+package org.multimodule.spring_basic.config;
 
+import org.multimodule.spring_basic.command.application.*;
 import org.multimodule.spring_basic.query.CarItemDao;
 import org.multimodule.spring_basic.query.ItemDao;
 import org.multimodule.spring_basic.query.MemberDao;

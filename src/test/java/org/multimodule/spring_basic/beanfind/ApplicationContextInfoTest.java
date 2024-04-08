@@ -2,12 +2,9 @@ package org.multimodule.spring_basic.beanfind;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.multimodule.spring_basic.command.application.AppConfig;
+import org.multimodule.spring_basic.config.AppConfig;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationContextInfoTest {
 

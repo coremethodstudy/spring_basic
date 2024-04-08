@@ -3,11 +3,10 @@ package org.multimodule.spring_basic.member;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.multimodule.spring_basic.command.application.AppConfig;
+import org.multimodule.spring_basic.config.AppConfig;
 import org.multimodule.spring_basic.command.domain.member.Grade;
 import org.multimodule.spring_basic.command.domain.member.Member;
 import org.multimodule.spring_basic.command.application.MemberService;
-import org.multimodule.spring_basic.command.application.MemberServiceImpl;
 
 class MemberServiceTest {
     MemberService memberService;

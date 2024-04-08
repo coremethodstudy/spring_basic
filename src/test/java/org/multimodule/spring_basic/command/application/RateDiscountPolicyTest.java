@@ -4,10 +4,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.multimodule.spring_basic.command.domain.member.Grade;
-import org.multimodule.spring_basic.command.domain.member.Member;
+import org.multimodule.spring_basic.config.AppConfig;
 import org.multimodule.spring_basic.query.MemberData;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class RateDiscountPolicyTest {
 
