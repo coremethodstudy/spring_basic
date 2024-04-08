@@ -11,13 +11,14 @@ import org.multimodule.spring_basic.dto.OrderRequestDto;
 import org.multimodule.spring_basic.repository.ItemRepository;
 import org.multimodule.spring_basic.repository.MemoryMemberRepository;
 import org.multimodule.spring_basic.repository.OrderRepository;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
 public class OrderApp {
 
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
         MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
         OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
 
