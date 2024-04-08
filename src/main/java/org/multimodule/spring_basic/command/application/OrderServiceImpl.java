@@ -10,7 +10,7 @@ public class OrderServiceImpl implements OrderService{
     private final MemberDao memberDao;
     private final OrderRepository orderRepository;
     private final ItemDao itemDao;
-    private DiscountPolicy discountPolicy;
+    private final DiscountPolicy discountPolicy;
 
     public OrderServiceImpl(MemberDao memberDao
                             ,OrderRepository orderRepository

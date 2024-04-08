@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://
+www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="memberService" class="org.multimodule.spring_basic.command.application.MemberServiceImpl">
+        <constructor-arg name="memberRepository" ref="memberRepository" />
+    </bean>
+    <bean id="memberRepository" class="org.multimodule.spring_basic.repository.MemoryMemberRepository" />
+    <bean id="orderService" class="org.multimodule.spring_basic.command.application.OrderServiceImpl">
+        <constructor-arg name="memberDao" ref="memberDao" />
+        <constructor-arg name="orderRepository" ref="orderRepository" />
+        <constructor-arg name="itemDao" ref="itemDao" />
+        <constructor-arg name="discountPolicy" ref="discountPolicy" />
+    </bean>
+    <bean id="discountPolicy" class="org.multimodule.spring_basic.command.application.RateDiscountPolicy" />
+    <bean id="itemDao" class="org.multimodule.spring_basic.query.CarItemDao"/>
+    <bean id="memberDao" class="org.multimodule.spring_basic.query.MemoryMemberDao"/>
+    <bean id="orderRepository" class="org.multimodule.spring_basic.repository.DiscountOrderRepository"/>
+</beans>
