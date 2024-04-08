@@ -28,12 +28,10 @@ public class AppConfig {
     }
 
     @Bean
-    public ItemRepository itemRepository() { return new CarItemRepository(); }
+    public MemberRepository memberRepository() { return new MemoryMemberRepository(); }
 
     @Bean
-    public DiscountPolicy discountPolicy() {
-        return new RateDiscountPolicy();
-    }
+    public MemberDao memberDao() { return new MemoryMemberDao(); }
 
     @Bean
     public OrderRepository orderRepository() {
@@ -44,8 +42,11 @@ public class AppConfig {
     public ItemDao itemDao() { return new CarItemDao(); }
 
     @Bean
-    public MemberDao memberDao() { return new MemoryMemberDao(); }
+    public DiscountPolicy discountPolicy() {
+        return new RateDiscountPolicy();
+    }
 
     @Bean
-    public MemberRepository memberRepository() { return new MemoryMemberRepository(); }
+    public ItemRepository itemRepository() { return new CarItemRepository(); }
+
 }
