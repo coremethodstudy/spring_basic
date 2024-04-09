@@ -22,9 +22,18 @@ public class AppConfig {
         return new OrderServiceImpl(
                 memberDao()
                 ,orderRepository()
-                ,itemDaoList()
+                ,itemRepositoryList()
                 ,discountPolicy()
         );
+    }
+
+    @Bean
+    public List<ItemRepository> itemRepositoryList() {
+        List<ItemRepository> itemRepositoryList = new ArrayList<>();
+        itemRepositoryList.add(new CarItemRepository());
+        itemRepositoryList.add(new HomeApplianceRepository());
+        itemRepositoryList.add(new ElectronicProductRepository());
+        return itemRepositoryList;
     }
 
     @Bean
@@ -36,18 +45,6 @@ public class AppConfig {
     @Bean
     public OrderRepository orderRepository() {
         return new DiscountOrderRepository();
-    }
-
-//    @Bean
-//    public ItemDao itemDao() { return new CarItemDao(); }
-
-
-    @Bean
-    public List<ItemDao> itemDaoList() {
-        List<ItemDao> itemDaoList = new ArrayList<>();
-        itemDaoList.add(new CarItemDao());
-        itemDaoList.add(new HomeApplianceDao());
-        return itemDaoList;
     }
 
     @Bean

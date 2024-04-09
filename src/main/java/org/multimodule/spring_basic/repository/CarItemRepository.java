@@ -1,6 +1,7 @@
 package org.multimodule.spring_basic.repository;
 
 import org.multimodule.spring_basic.command.domain.item.Item;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -11,5 +12,10 @@ public class CarItemRepository implements ItemRepository {
     @Override
     public void save(Item item) {
         productStore.put(item.getId(), item);
+    }
+
+    @Override
+    public Item findById(Long id) {
+        return productStore.get(id);
     }
 }

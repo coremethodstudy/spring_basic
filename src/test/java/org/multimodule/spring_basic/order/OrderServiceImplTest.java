@@ -13,6 +13,7 @@ import org.multimodule.spring_basic.config.AppConfig;
 import org.multimodule.spring_basic.dto.OrderRequestDto;
 import org.multimodule.spring_basic.repository.ItemRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class OrderServiceImplTest {
@@ -39,13 +40,13 @@ class OrderServiceImplTest {
         Car bmwCar = new Car(3L, "BMW", 100000000);
         itemRepository.save(item);
         itemRepository.save(bmwCar);
-        OrderRequestDto orderRequestDto1 = new OrderRequestDto("1", "2");
-        OrderRequestDto orderRequestDto2 = new OrderRequestDto("1", "3");
-
+        List<String> orderRequestDtoList = new ArrayList<>();
+        orderRequestDtoList.add("2");
+        orderRequestDtoList.add("3");
+        OrderRequestDto orderRequestDto = new OrderRequestDto("1", orderRequestDtoList);
 
         //when
-        orderService.create(orderRequestDto1);
-        orderService.create(orderRequestDto2);
+        orderService.create(orderRequestDto);
         List<Order> orderList = orderService.findAllById(1L);
 
         //then

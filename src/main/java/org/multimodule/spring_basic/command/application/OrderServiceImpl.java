@@ -1,30 +1,31 @@
 package org.multimodule.spring_basic.command.application;
 
+import org.multimodule.spring_basic.command.domain.item.Item;
 import org.multimodule.spring_basic.dto.OrderRequestDto;
 import org.multimodule.spring_basic.exception.ItemDomainException;
 import org.multimodule.spring_basic.query.*;
 import org.multimodule.spring_basic.repository.*;
 import org.multimodule.spring_basic.command.domain.order.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OrderServiceImpl implements OrderService{
 
     private final MemberDao memberDao;
     private final OrderRepository orderRepository;
-//    private final ItemDao itemDao;
-    private final List<ItemDao> itemDaoList;
+    private final List<ItemRepository> itemRepositoryList;
     private final DiscountPolicy discountPolicy;
 
     public OrderServiceImpl(MemberDao memberDao
                             , OrderRepository orderRepository
-//                            ,ItemDao itemDao
-                            , List<ItemDao> itemDaoList
+                            , List<ItemRepository> itemRepositoryList
                             , DiscountPolicy discountPolicy) {
         this.memberDao = memberDao;
         this.orderRepository = orderRepository;
-//        this.itemDao = itemDao;
-        this.itemDaoList = itemDaoList;
+        this.itemRepositoryList = itemRepositoryList;
         this.discountPolicy = discountPolicy;
     }
 
@@ -33,28 +34,43 @@ public class OrderServiceImpl implements OrderService{
         //회원 조회: 할인을 위해서는 회원 등급이 필요하다. 그래서 주문 서비스는 회원 저장소에서 회원을 조회한다.
         MemberData memberData = memberDao.findById(Long.parseLong((orderRequestDto.getMemberId())));
 
-        ItemData itemData = null;
-        for(ItemDao itemDao : itemDaoList) {
-            itemData = itemDao.findById(Long.parseLong(orderRequestDto.getItemId()));
-            if(itemData != null) {
-                break;
+
+        List<String> itemIdList = orderRequestDto.getItemIdList();
+        List<Long> itemIdLongList = itemIdList.stream()
+                .map(e -> Long.parseLong(e))
+                .collect(Collectors.toList());
+
+
+        Item item = null;
+        List<Item> itemList = new ArrayList<>();
+
+        for(ItemRepository itemRepository : itemRepositoryList) {
+
+            for (Long id : itemIdLongList) {
+                item = itemRepository.findById(id);
+                if(item != null && !itemList.contains(item)) {
+                    itemList.add(item);
+                    break;
+                }
             }
-        }
-        if(itemData == null) {
-            throw new ItemDomainException("ItemData not found");
-        }
-        
-        //할인 적용: 주문 서비스는 회원 등급에 따른 할인 여부를 할인 정책에 위임한다.
-        int discountPrice = discountPolicy.discountByGrade(memberData, itemData.getItemPrice());
 
-        //주문 결과 반환: 주문 서비스는 할인 결과를 포함한 주문 결과를 반환한다.
-        Order order = new Order(Long.parseLong(orderRequestDto.getMemberId()), itemData.getItemName(), itemData.getItemPrice(), discountPrice);
+            if(item == null) {
+                throw new ItemDomainException("Item not found");
+            }
 
-        orderRepository.save(order);
+            //할인 적용: 주문 서비스는 회원 등급에 따른 할인 여부를 할인 정책에 위임한다.
+            int discountPrice = discountPolicy.discountByGrade(memberData, item.getItemPrice());
+
+            //주문 결과 반환: 주문 서비스는 할인 결과를 포함한 주문 결과를 반환한다.
+            Order order = new Order(Long.parseLong(orderRequestDto.getMemberId()), item.getItemName(), item.getItemPrice(), discountPrice);
+
+            orderRepository.save(order);
+        }
     }
 
     @Override
     public List<Order> findAllById(Long memberId) {
         return orderRepository.findAllById(memberId);
     }
+
 }

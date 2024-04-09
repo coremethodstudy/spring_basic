@@ -29,10 +29,10 @@ public class OrderApp {
         ItemRepository itemRepository = applicationContext.getBean("itemRepository", ItemRepository.class);
         itemRepository.save(item);
 
-        OrderRequestDto orderRequestDto = new OrderRequestDto("1", "2");
-        orderService.create(orderRequestDto);
-
-        OrderRepository orderRepository = applicationContext.getBean("orderRepository", OrderRepository.class);
+//        OrderRequestDto orderRequestDto = new OrderRequestDto("1", "2");
+//        orderService.create(orderRequestDto);
+//
+//        OrderRepository orderRepository = applicationContext.getBean("orderRepository", OrderRepository.class);
 //        Order order = orderRepository.findById(Long.parseLong(orderRequestDto.getMemberId()));
 //        System.out.println("order = " + order);
     }
