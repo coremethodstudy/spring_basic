@@ -33,7 +33,7 @@ public class OrderApp {
         orderService.create(orderRequestDto);
 
         OrderRepository orderRepository = applicationContext.getBean("orderRepository", OrderRepository.class);
-        Order order = orderRepository.findById(Long.parseLong(orderRequestDto.getMemberId()));
-        System.out.println("order = " + order);
+//        Order order = orderRepository.findById(Long.parseLong(orderRequestDto.getMemberId()));
+//        System.out.println("order = " + order);
     }
 }
