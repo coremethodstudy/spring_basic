@@ -19,9 +19,5 @@ public class MemberServiceImpl implements MemberService {
         return memberRepository.findMemberById(memberId);
     }
 
-    @Override
-    public void clear() {
-        memberRepository.clear();
-    }
-    
+
 }

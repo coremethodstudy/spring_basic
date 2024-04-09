@@ -8,6 +8,8 @@ import org.multimodule.spring_basic.member.service.impl.MemberServiceImpl;
 import org.multimodule.spring_basic.order.service.OrderService;
 import org.multimodule.spring_basic.order.service.impl.OrderServiceImpl;
 
+import static org.multimodule.spring_basic.member.repository.impl.MemoryMemberRepositoryImpl.store;
+
 /**
  * packageName    : org.multimodule.spring_basic.order
  * fileName       : OrderTest
@@ -42,15 +44,15 @@ class OrderTest {
 
     @AfterEach
     void afterEach() {
-        memberService.clear();
+        store.clear();
     }
 
     @Test
     void VIP_주문_테스트() {
-        Order vipMemberPrice_10_000 = orderService.createOrder(vipMember.getId(), "itemA", 10000);
-        Assertions.assertEquals(1000, vipMemberPrice_10_000.getDiscountPrice());
+        Order vipMemberPrice_10_000 = orderService.createOrder(vipMember.getId(), "itemA", 10_000);
+        Assertions.assertEquals(1_000, vipMemberPrice_10_000.getDiscountPrice());
 
-        Order basicMemberPrice_10_000 = orderService.createOrder(basicMember.getId(), "itemA", 10000);
+        Order basicMemberPrice_10_000 = orderService.createOrder(basicMember.getId(), "itemA", 10_000);
         Assertions.assertEquals(0, basicMemberPrice_10_000.getDiscountPrice());
     }
 

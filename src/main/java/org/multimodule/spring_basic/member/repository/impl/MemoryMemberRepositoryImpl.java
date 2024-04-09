@@ -8,8 +8,7 @@ import java.util.Map;
 
 public class MemoryMemberRepositoryImpl implements MemberRepository {
 
-    private static Map<Long, Member> store = new HashMap<>();
-
+    public static final Map<Long, Member> store = new HashMap<>();
 
     @Override
     public void save(Member member) {
@@ -21,8 +20,4 @@ public class MemoryMemberRepositoryImpl implements MemberRepository {
         return store.get(memberId);
     }
 
-    @Override
-    public void clear() {
-        store.clear();
-    }
 }

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.*;
 import org.multimodule.spring_basic.member.service.MemberService;
 import org.multimodule.spring_basic.member.service.impl.MemberServiceImpl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.multimodule.spring_basic.member.repository.impl.MemoryMemberRepositoryImpl.store;
 
 /**
  * packageName    : org.multimodule.spring_basic.member
@@ -34,7 +34,7 @@ class MemberTest {
 
     @AfterEach
     void afterEach() {
-        memberService.clear();
+        store.clear();
     }
 
     @Test
