@@ -45,26 +45,25 @@ public class OrderServiceImpl implements OrderService{
         List<Item> itemList = new ArrayList<>();
 
         for(ItemRepository itemRepository : itemRepositoryList) {
-
+            boolean flag = false;
             for (Long id : itemIdLongList) {
                 item = itemRepository.findById(id);
                 if(item != null && !itemList.contains(item)) {
                     itemList.add(item);
+                    flag = true;
                     break;
                 }
             }
 
-            if(item == null) {
-                throw new ItemDomainException("Item not found");
+            if(flag) {
+                //할인 적용: 주문 서비스는 회원 등급에 따른 할인 여부를 할인 정책에 위임한다.
+                int discountPrice = discountPolicy.discountByGrade(memberData, item.getItemPrice());
+
+                //주문 결과 반환: 주문 서비스는 할인 결과를 포함한 주문 결과를 반환한다.
+                Order order = new Order(Long.parseLong(orderRequestDto.getMemberId()), item.getItemName(), item.getItemPrice(), discountPrice);
+
+                orderRepository.save(order);
             }
-
-            //할인 적용: 주문 서비스는 회원 등급에 따른 할인 여부를 할인 정책에 위임한다.
-            int discountPrice = discountPolicy.discountByGrade(memberData, item.getItemPrice());
-
-            //주문 결과 반환: 주문 서비스는 할인 결과를 포함한 주문 결과를 반환한다.
-            Order order = new Order(Long.parseLong(orderRequestDto.getMemberId()), item.getItemName(), item.getItemPrice(), discountPrice);
-
-            orderRepository.save(order);
         }
     }
 
