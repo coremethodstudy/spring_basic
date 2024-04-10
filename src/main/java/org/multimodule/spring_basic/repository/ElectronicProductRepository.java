@@ -2,9 +2,11 @@ package org.multimodule.spring_basic.repository;
 
 import org.multimodule.spring_basic.command.domain.item.Item;
 import org.multimodule.spring_basic.repository.ItemRepository;
+import org.springframework.stereotype.Component;
 
 import static org.multimodule.spring_basic.repository.CarItemRepository.productStore;
 
+@Component
 public class ElectronicProductRepository implements ItemRepository {
     @Override
     public void save(Item item) {

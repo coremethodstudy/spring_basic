@@ -1,6 +1,7 @@
 package org.multimodule.spring_basic.repository;
 
 import org.multimodule.spring_basic.command.domain.order.Order;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
+@Component
 public class DiscountOrderRepository implements OrderRepository {
 
     private static Map<Long, List<Order>> orderStore = new ConcurrentHashMap<>();

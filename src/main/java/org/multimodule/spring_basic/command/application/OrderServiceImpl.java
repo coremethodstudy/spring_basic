@@ -6,12 +6,15 @@ import org.multimodule.spring_basic.exception.ItemDomainException;
 import org.multimodule.spring_basic.query.*;
 import org.multimodule.spring_basic.repository.*;
 import org.multimodule.spring_basic.command.domain.order.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class OrderServiceImpl implements OrderService{
 
     private final MemberDao memberDao;
@@ -19,6 +22,7 @@ public class OrderServiceImpl implements OrderService{
     private final List<ItemRepository> itemRepositoryList;
     private final DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberDao memberDao
                             , OrderRepository orderRepository
                             , List<ItemRepository> itemRepositoryList
