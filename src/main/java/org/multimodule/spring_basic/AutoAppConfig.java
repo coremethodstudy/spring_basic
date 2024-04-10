@@ -1,4 +1,4 @@
-package org.multimodule;
+package org.multimodule.spring_basic;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;

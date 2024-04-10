@@ -2,7 +2,7 @@ package org.multimodule.spring_basic.scan;
 
 import org.junit.jupiter.api.Test;
 import org.multimodule.spring_basic.command.application.MemberService;
-import org.multimodule.AutoAppConfig;
+import org.multimodule.spring_basic.AutoAppConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
