@@ -1,13 +1,12 @@
 package org.multimodule.spring_basic.command.application;
 
+import org.multimodule.spring_basic.annotation.MainDiscountPolicy;
 import org.multimodule.spring_basic.command.domain.member.Grade;
 import org.multimodule.spring_basic.query.MemberData;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
-@Primary
+@MainDiscountPolicy
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private final double rateDiscount = 0.1;

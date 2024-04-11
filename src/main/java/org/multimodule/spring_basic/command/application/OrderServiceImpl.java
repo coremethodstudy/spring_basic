@@ -1,5 +1,6 @@
 package org.multimodule.spring_basic.command.application;
 
+import org.multimodule.spring_basic.annotation.MainDiscountPolicy;
 import org.multimodule.spring_basic.command.domain.item.Item;
 import org.multimodule.spring_basic.dto.OrderRequestDto;
 import org.multimodule.spring_basic.query.*;
@@ -25,7 +26,7 @@ public class OrderServiceImpl implements OrderService{
     public OrderServiceImpl(MemberDao memberDao
                             , OrderRepository orderRepository
                             , List<ItemRepository> itemRepositoryList
-                            , DiscountPolicy discountPolicy) {
+                            , @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberDao = memberDao;
         this.orderRepository = orderRepository;
         this.itemRepositoryList = itemRepositoryList;
