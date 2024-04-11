@@ -1,12 +1,12 @@
 package org.multimodule.spring_basic.command.application;
 
-import lombok.RequiredArgsConstructor;
 import org.multimodule.spring_basic.command.domain.item.Item;
 import org.multimodule.spring_basic.dto.OrderRequestDto;
 import org.multimodule.spring_basic.query.*;
 import org.multimodule.spring_basic.repository.*;
 import org.multimodule.spring_basic.command.domain.order.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
 
     private final MemberDao memberDao;
@@ -22,16 +21,16 @@ public class OrderServiceImpl implements OrderService{
     private final List<ItemRepository> itemRepositoryList;
     private final DiscountPolicy discountPolicy;
 
-//    @Autowired
-//    public OrderServiceImpl(MemberDao memberDao
-//                            , OrderRepository orderRepository
-//                            , List<ItemRepository> itemRepositoryList
-//                            , DiscountPolicy discountPolicy) {
-//        this.memberDao = memberDao;
-//        this.orderRepository = orderRepository;
-//        this.itemRepositoryList = itemRepositoryList;
-//        this.discountPolicy = discountPolicy;
-//    }
+    @Autowired
+    public OrderServiceImpl(MemberDao memberDao
+                            , OrderRepository orderRepository
+                            , List<ItemRepository> itemRepositoryList
+                            , @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+        this.memberDao = memberDao;
+        this.orderRepository = orderRepository;
+        this.itemRepositoryList = itemRepositoryList;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public void create(OrderRequestDto orderRequestDto){
