@@ -17,19 +17,39 @@ import java.util.stream.Collectors;
 @Component
 public class OrderServiceImpl implements OrderService{
 
-    private final MemberDao memberDao;
-    private final OrderRepository orderRepository;
-    private final List<ItemRepository> itemRepositoryList;
-    private final DiscountPolicy discountPolicy;
+    private MemberDao memberDao;
+    private OrderRepository orderRepository;
+    private List<ItemRepository> itemRepositoryList;
+    private DiscountPolicy discountPolicy;
+
+//    @Autowired
+//    public OrderServiceImpl(MemberDao memberDao
+//                            , OrderRepository orderRepository
+//                            , List<ItemRepository> itemRepositoryList
+//                            , DiscountPolicy discountPolicy) {
+//        this.memberDao = memberDao;
+//        this.orderRepository = orderRepository;
+//        this.itemRepositoryList = itemRepositoryList;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     @Autowired
-    public OrderServiceImpl(MemberDao memberDao
-                            , OrderRepository orderRepository
-                            , List<ItemRepository> itemRepositoryList
-                            , DiscountPolicy discountPolicy) {
+    public void setMemberDao(MemberDao memberDao) {
         this.memberDao = memberDao;
+    }
+
+    @Autowired
+    public void setOrderRepository(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
+    }
+
+    @Autowired
+    public void setItemRepositoryList(List<ItemRepository> itemRepositoryList) {
         this.itemRepositoryList = itemRepositoryList;
+    }
+
+    @Autowired
+    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
         this.discountPolicy = discountPolicy;
     }
 
