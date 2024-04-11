@@ -10,6 +10,7 @@ import org.multimodule.spring_basic.member.MemoryMemberRepository;
 import org.multimodule.spring_basic.order.OrderService;
 import org.multimodule.spring_basic.order.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -58,6 +59,7 @@ public class AppConfig {
 
     //이렇게 할인 정책을 변경해도 클라이언트는 수정할 필요가 없다!!!
     @Bean
+    @Qualifier("mainDiscountPolicy")
     public DiscountPolicy discountPolicy() {
 //        return new FixDiscountPolicy();
         return new RateDiscountPolicy();
