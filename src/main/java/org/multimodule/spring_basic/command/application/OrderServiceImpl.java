@@ -25,7 +25,7 @@ public class OrderServiceImpl implements OrderService{
     public OrderServiceImpl(MemberDao memberDao
                             , OrderRepository orderRepository
                             , List<ItemRepository> itemRepositoryList
-                            , @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+                            , DiscountPolicy discountPolicy) {
         this.memberDao = memberDao;
         this.orderRepository = orderRepository;
         this.itemRepositoryList = itemRepositoryList;
