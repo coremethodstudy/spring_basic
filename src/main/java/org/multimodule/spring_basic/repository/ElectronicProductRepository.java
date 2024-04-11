@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import static org.multimodule.spring_basic.repository.CarItemRepository.productStore;
 
-@Component
 public class ElectronicProductRepository implements ItemRepository {
     @Override
     public void save(Item item) {

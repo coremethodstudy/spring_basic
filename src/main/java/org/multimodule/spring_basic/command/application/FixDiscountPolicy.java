@@ -3,9 +3,10 @@ package org.multimodule.spring_basic.command.application;
 import org.multimodule.spring_basic.command.domain.member.Grade;
 import org.multimodule.spring_basic.query.MemberData;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class FixDiscountPolicy implements DiscountPolicy {
 
     private final int vipDiscountPrice = 1000;
