@@ -1,8 +1,8 @@
 package org.multimodule.spring_basic.command.application;
 
+import lombok.RequiredArgsConstructor;
 import org.multimodule.spring_basic.command.domain.item.Item;
 import org.multimodule.spring_basic.dto.OrderRequestDto;
-import org.multimodule.spring_basic.exception.ItemDomainException;
 import org.multimodule.spring_basic.query.*;
 import org.multimodule.spring_basic.repository.*;
 import org.multimodule.spring_basic.command.domain.order.*;
@@ -10,17 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
 
-    private MemberDao memberDao;
-    private OrderRepository orderRepository;
-    private List<ItemRepository> itemRepositoryList;
-    private DiscountPolicy discountPolicy;
+    private final MemberDao memberDao;
+    private final OrderRepository orderRepository;
+    private final List<ItemRepository> itemRepositoryList;
+    private final DiscountPolicy discountPolicy;
 
 //    @Autowired
 //    public OrderServiceImpl(MemberDao memberDao
@@ -32,26 +32,6 @@ public class OrderServiceImpl implements OrderService{
 //        this.itemRepositoryList = itemRepositoryList;
 //        this.discountPolicy = discountPolicy;
 //    }
-
-    @Autowired
-    public void setMemberDao(MemberDao memberDao) {
-        this.memberDao = memberDao;
-    }
-
-    @Autowired
-    public void setOrderRepository(OrderRepository orderRepository) {
-        this.orderRepository = orderRepository;
-    }
-
-    @Autowired
-    public void setItemRepositoryList(List<ItemRepository> itemRepositoryList) {
-        this.itemRepositoryList = itemRepositoryList;
-    }
-
-    @Autowired
-    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
-        this.discountPolicy = discountPolicy;
-    }
 
     @Override
     public void create(OrderRequestDto orderRequestDto){
