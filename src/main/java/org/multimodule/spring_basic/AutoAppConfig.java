@@ -31,13 +31,13 @@ public class AutoAppConfig {
         return new FixDiscountPolicy();
     }
 
-    @Bean
-    public List<ItemRepository> itemRepositoryList() {
-        List<ItemRepository> itemRepositoryList = new ArrayList<>();
-        itemRepositoryList.add(new CarItemRepository());
-        itemRepositoryList.add(new HomeApplianceRepository());
-        itemRepositoryList.add(new ElectronicProductRepository());
-        return itemRepositoryList;
-    }
+//    @Bean
+//    public List<ItemRepository> itemRepositoryList() {
+//        List<ItemRepository> itemRepositoryList = new ArrayList<>();
+//        itemRepositoryList.add(new CarItemRepository());
+//        itemRepositoryList.add(new HomeApplianceRepository());
+//        itemRepositoryList.add(new ElectronicProductRepository());
+//        return itemRepositoryList;
+//    }
 
 }
