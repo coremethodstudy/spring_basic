@@ -3,7 +3,9 @@ package org.multimodule.spring_basic.discount.impl;
 import org.multimodule.spring_basic.discount.DiscountPolicy;
 import org.multimodule.spring_basic.member.Grade;
 import org.multimodule.spring_basic.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private int discountPercent = 10;

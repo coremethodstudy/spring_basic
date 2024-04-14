@@ -2,10 +2,12 @@ package org.multimodule.spring_basic.member.repository.impl;
 
 import org.multimodule.spring_basic.member.Member;
 import org.multimodule.spring_basic.member.repository.MemberRepository;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class MemoryMemberRepositoryImpl implements MemberRepository {
 
     private static Map<Long, Member> store = new HashMap<>();
