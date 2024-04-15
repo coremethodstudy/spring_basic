@@ -2,11 +2,13 @@ package org.multimodule.spring_basic.repository;
 
 
 import org.multimodule.spring_basic.command.domain.member.Member;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
-@Component
-public interface MemberRepository {
+import java.util.Optional;
 
-    void save(Member member);
-    Member findById(Long memberId);
+@Component
+public interface MemberRepository extends JpaRepository<Member, Long> {
+
+    Optional<Member> findById(Long memberId);
 }

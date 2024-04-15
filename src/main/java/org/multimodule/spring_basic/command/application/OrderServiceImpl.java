@@ -1,13 +1,11 @@
 package org.multimodule.spring_basic.command.application;
 
-import org.multimodule.spring_basic.annotation.MainDiscountPolicy;
 import org.multimodule.spring_basic.command.domain.item.Item;
+import org.multimodule.spring_basic.command.domain.member.Member;
 import org.multimodule.spring_basic.dto.OrderRequestDto;
-import org.multimodule.spring_basic.query.*;
 import org.multimodule.spring_basic.repository.*;
 import org.multimodule.spring_basic.command.domain.order.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -17,17 +15,17 @@ import java.util.stream.Collectors;
 @Component
 public class OrderServiceImpl implements OrderService{
 
-    private final MemberDao memberDao;
+    private final MemberRepository memberRepository;
     private final OrderRepository orderRepository;
     private final List<ItemRepository> itemRepositoryList;
     private final DiscountPolicy discountPolicy;
 
     @Autowired
-    public OrderServiceImpl(MemberDao memberDao
+    public OrderServiceImpl(MemberRepository memberRepository
                             , OrderRepository orderRepository
                             , List<ItemRepository> itemRepositoryList
                             , DiscountPolicy discountPolicy) {
-        this.memberDao = memberDao;
+        this.memberRepository = memberRepository;
         this.orderRepository = orderRepository;
         this.itemRepositoryList = itemRepositoryList;
         this.discountPolicy = discountPolicy;
@@ -36,7 +34,8 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public void create(OrderRequestDto orderRequestDto){
         //회원 조회: 할인을 위해서는 회원 등급이 필요하다. 그래서 주문 서비스는 회원 저장소에서 회원을 조회한다.
-        MemberData memberData = memberDao.findById(Long.parseLong((orderRequestDto.getMemberId())));
+        Member member = memberRepository.findById(Long.parseLong((orderRequestDto.getMemberId())))
+                .orElseThrow(() -> new IllegalArgumentException(orderRequestDto.getMemberId() + " memberId not found."));
 
 
         List<String> itemIdList = orderRequestDto.getItemIdList();
@@ -51,7 +50,8 @@ public class OrderServiceImpl implements OrderService{
         for(ItemRepository itemRepository : itemRepositoryList) {
             boolean flag = false;
             for (Long id : itemIdLongList) {
-                item = itemRepository.findById(id);
+                item = itemRepository.findById(id)
+                        .orElseThrow(() -> new IllegalArgumentException(id + " itemId not found."));
                 if(item != null && !itemList.contains(item)) {
                     itemList.add(item);
                     flag = true;
@@ -61,7 +61,7 @@ public class OrderServiceImpl implements OrderService{
 
             if(flag) {
                 //할인 적용: 주문 서비스는 회원 등급에 따른 할인 여부를 할인 정책에 위임한다.
-                int discountPrice = discountPolicy.discountByGrade(memberData, item.getItemPrice());
+                int discountPrice = discountPolicy.discountByGrade(member, item.getItemPrice());
 
                 //주문 결과 반환: 주문 서비스는 할인 결과를 포함한 주문 결과를 반환한다.
                 Order order = new Order(Long.parseLong(orderRequestDto.getMemberId()), item.getItemName(), item.getItemPrice(), discountPrice);
@@ -73,7 +73,7 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public List<Order> findAllById(Long memberId) {
-        return orderRepository.findAllById(memberId);
+        return orderRepository.findAllByMemberId(memberId);
     }
 
 }

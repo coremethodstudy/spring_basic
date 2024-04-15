@@ -2,9 +2,15 @@ server:
   port: 8080
 
 spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test_local_2
+    username: juwonlee
+    password: glass
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     properties:
       hibernate:
         auto_quote_keyword: false
@@ -19,3 +25,10 @@ spring:
           type:
             descriptor:
               sql: trace
+
+#payment:
+#  toss:
+#    test_client_api_key :
+#    test_secrete_api_key :
+#    success_url :
+#    fail_url :

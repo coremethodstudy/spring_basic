@@ -3,15 +3,8 @@ package org.multimodule.spring_basic;
 import org.multimodule.spring_basic.command.application.DiscountPolicy;
 import org.multimodule.spring_basic.command.application.FixDiscountPolicy;
 import org.multimodule.spring_basic.command.application.RateDiscountPolicy;
-import org.multimodule.spring_basic.repository.CarItemRepository;
-import org.multimodule.spring_basic.repository.ElectronicProductRepository;
-import org.multimodule.spring_basic.repository.HomeApplianceRepository;
-import org.multimodule.spring_basic.repository.ItemRepository;
 import org.springframework.context.annotation.*;
 import org.springframework.context.annotation.ComponentScan.Filter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Configuration
 @ComponentScan(

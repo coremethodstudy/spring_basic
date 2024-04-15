@@ -21,6 +21,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public Member findMember(Long memberId) {
-        return memberRepository.findById(memberId);
+        return memberRepository.findById(memberId)
+                .orElseThrow(() -> new IllegalStateException(memberId + " memberId not found."));
     }
 }

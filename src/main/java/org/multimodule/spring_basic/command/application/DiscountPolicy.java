@@ -1,9 +1,9 @@
 package org.multimodule.spring_basic.command.application;
 
-import org.multimodule.spring_basic.query.MemberData;
+import org.multimodule.spring_basic.command.domain.member.Member;
 import org.springframework.stereotype.Component;
 
 @Component
 public interface DiscountPolicy {
-    int discountByGrade(MemberData memberData, int price);
+    int discountByGrade(Member member, int price);
 }

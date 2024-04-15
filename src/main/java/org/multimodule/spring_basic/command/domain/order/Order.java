@@ -1,7 +1,12 @@
 package org.multimodule.spring_basic.command.domain.order;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Order {
 
+    @Id
     private Long memberId;
     private String itemName;
     private int itemPrice;
@@ -12,6 +17,10 @@ public class Order {
         this.itemName = itemName;
         this.itemPrice = itemPrice;
         this.itemDiscountPrice = itemDiscountPrice;
+    }
+
+    public Order() {
+
     }
 
     public int calculatePrice() {
