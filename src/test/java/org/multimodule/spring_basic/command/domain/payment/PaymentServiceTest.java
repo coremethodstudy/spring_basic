@@ -1,23 +1,17 @@
 package org.multimodule.spring_basic.command.domain.payment;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.multimodule.spring_basic.command.application.MemberService;
-import org.multimodule.spring_basic.command.application.OrderService;
 import org.multimodule.spring_basic.command.domain.member.Grade;
 import org.multimodule.spring_basic.command.domain.member.Member;
 import org.multimodule.spring_basic.command.domain.payment.dto.PayType;
 import org.multimodule.spring_basic.command.domain.payment.dto.PaymentDto;
 import org.multimodule.spring_basic.command.domain.payment.dto.PaymentResDto;
-import org.multimodule.spring_basic.repository.ItemRepository;
 import org.multimodule.spring_basic.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class PaymentServiceTest {
 
