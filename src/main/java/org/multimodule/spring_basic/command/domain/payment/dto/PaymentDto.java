@@ -32,7 +32,7 @@ public class PaymentDto {
         return new Payment(payType
                             ,amount
                             ,orderName
-                            ,UUID.randomUUID().toString()
+                            ,Long.parseLong(UUID.randomUUID().toString())
                             ,false);
     }
 }

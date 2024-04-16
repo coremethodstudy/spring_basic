@@ -1,5 +1,6 @@
 package org.multimodule.spring_basic.command.domain.order;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -7,6 +8,7 @@ import jakarta.persistence.Id;
 public class Order {
 
     @Id
+    @Column(name = "member_id", nullable = false, unique = true)
     private Long memberId;
     private String itemName;
     private int itemPrice;

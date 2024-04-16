@@ -21,11 +21,11 @@ public class PaymentResDto {
     private String cancelReason;
     private String createdAt;
 
-    public PaymentResDto(String description, Long amount, String orderName, String orderId, String email, String name, String createdAt, boolean cancelYN, String failReason) {
+    public PaymentResDto(String description, Long amount, String orderName, Long orderId, String email, String name, String createdAt, boolean cancelYN, String failReason) {
         this.payType = description;
         this.amount = amount;
         this.orderName = orderName;
-        this.orderId = orderId;
+        this.orderId = String.valueOf(orderId);
         this.customerEmail = email;
         this.customerName = name;
         this.createdAt = createdAt;

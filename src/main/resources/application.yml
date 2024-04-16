@@ -10,7 +10,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       hibernate:
         auto_quote_keyword: false
@@ -26,9 +26,14 @@ spring:
             descriptor:
               sql: trace
 
-#payment:
-#  toss:
-#    test_client_api_key :
-#    test_secrete_api_key :
-#    success_url :
-#    fail_url :
+payment:
+  toss:
+    test_client_api_key : test_ck_ADpexMgkW36eDqeea798GbR5ozO0
+    test_secrete_api_key : test_ck_ADpexMgkW36eDqeea798GbR5ozO0
+    success_url :
+    fail_url :
+
+# thymeleaf 설정
+thymeleaf:
+  prefix: classpath:templates/
+  suffix: .html

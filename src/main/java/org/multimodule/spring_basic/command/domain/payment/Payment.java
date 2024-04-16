@@ -19,7 +19,7 @@ public class Payment {
     private PayType payType;
     private Long amount;
     private String orderName;
-    private String orderId;
+    private Long orderId;
 
     private boolean paySuccessYN;
 
@@ -35,7 +35,7 @@ public class Payment {
     private LocalDateTime createdAt;
 
 
-    public Payment(PayType payType, Long amount, String orderName, String orderId, boolean paySuccessYN) {
+    public Payment(PayType payType, Long amount, String orderName, Long orderId, boolean paySuccessYN) {
         this.payType = payType;
         this.amount = amount;
         this.orderName = orderName;
