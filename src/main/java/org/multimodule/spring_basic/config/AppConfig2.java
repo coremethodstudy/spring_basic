@@ -7,8 +7,10 @@ import org.multimodule.spring_basic.order.discount.FixDiscount;
 import org.multimodule.spring_basic.order.discount.MemberService;
 import org.multimodule.spring_basic.order.discount.MemoryMemberRepository;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-public class AppConfig {
+@Configuration
+public class AppConfig2 {
 
     @Bean
     public OrderService orderService(){
@@ -36,6 +38,5 @@ public class AppConfig {
         System.err.println("@@@@@@ memoryMemberRepository @@@@@");
         return new MemoryMemberRepository();
     }
-
 
 }
